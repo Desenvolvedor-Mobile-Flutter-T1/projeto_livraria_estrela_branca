@@ -1,0 +1,59 @@
+import 'package:flutter/material.dart';
+import 'package:projeto_livraria_estrela_branca/app/data/book_model.dart';
+import 'package:projeto_livraria_estrela_branca/app/view/home/widgets/book.card.dart';
+import 'package:projeto_livraria_estrela_branca/app/view_model/home_viewmodel.dart';
+
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final List<BookModel> bookList = [];
+  final HomeViewmodel viewmodel = HomeViewmodel();
+
+  @override
+  void initState() {
+    bookList.addAll(viewmodel.getBooks());
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        leading: Icon(Icons.star, color: Colors.white),
+        backgroundColor: Colors.black,
+        title: Text(
+          'Livraria Estrela branca',
+          style: TextStyle(color: Colors.white),
+        ),
+        centerTitle: true,
+      ),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              Wrap(
+                spacing: 20,
+                runSpacing: 20,
+                children: bookList
+                    .map(
+                      (e) => BookCard(
+                        title: e.title,
+                        author: e.author,
+                        imageUrl: e.imageUrl,
+                      ),
+                    )
+                    .toList(),
+              ),
+            ],
+          ),
+        ),
+      ),
+      //
+    );
+  }
+}
