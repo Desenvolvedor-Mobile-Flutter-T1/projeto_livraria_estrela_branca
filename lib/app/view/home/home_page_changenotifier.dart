@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_livraria_estrela_branca/app/view/home/widgets/book.card.dart';
-import 'package:projeto_livraria_estrela_branca/app/view_model/home_viewmodel.dart';
+import 'package:projeto_livraria_estrela_branca/app/view_model/home_viewmodel_changenotifier.dart';
 import 'package:projeto_livraria_estrela_branca/app/view_model/home_viewmodel_states.dart';
 
 class HomePage extends StatefulWidget {
@@ -12,23 +12,11 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final HomeViewmodel viewmodel = HomeViewmodel();
+
   @override
   void initState() {
     viewmodel.getBooks();
-
-    viewmodel.shoppingCart.addListener(() {
-      if (viewmodel.shoppingCart.value.length > 10) {
-        print('Maior que 10');
-      }
-    });
-
     super.initState();
-  }
-
-  @override
-  void dispose() {
-    viewmodel.shoppingCart.dispose();
-    super.dispose();
   }
 
   @override
@@ -43,46 +31,29 @@ class _HomePageState extends State<HomePage> {
           style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
-        actions: [
-          ValueListenableBuilder(
-            valueListenable: viewmodel.shoppingCart,
-            builder: (context, value, child) {
-              return Row(
-                children: [
-                  Icon(Icons.shopping_cart, color: Colors.white),
-                  Text(
-                    value.length.toString(),
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  SizedBox(width: 10),
-                ],
-              );
-            },
-          ),
-        ],
       ),
       body: SingleChildScrollView(
         child: Center(
           child: Column(
             children: [
-              ValueListenableBuilder(
-                valueListenable: viewmodel.state,
-                builder: (context, value, child) {
-                  if (value is LoadingState) {
+              ListenableBuilder(
+                listenable: viewmodel,
+                builder: (context, child) {
+                  if (viewmodel.state is LoadingState) {
                     return CircularProgressIndicator();
                   }
-                  if (value is ErrorState) {
+                  if (viewmodel.state is ErrorState) {
                     return Text((viewmodel.state as ErrorState).errorMessage);
                   }
-                  if (value is SuccessState) {
-                    final books = value.books;
+                  if (viewmodel.state is SuccessState) {
+                    final books = (viewmodel.state as SuccessState).books;
                     return Wrap(
                       spacing: 20,
                       runSpacing: 20,
                       children: books
                           .map(
                             (e) => BookCard(
-                              onTap: () => viewmodel.addBookToCart(e),
+                              onTap: () {},
                               title: e.title,
                               author: e.author,
                               imageUrl: e.imageUrl,

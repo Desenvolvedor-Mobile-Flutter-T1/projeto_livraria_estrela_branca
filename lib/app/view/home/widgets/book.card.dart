@@ -4,12 +4,14 @@ class BookCard extends StatelessWidget {
   final String title;
   final String author;
   final String imageUrl;
+  final VoidCallback onTap;
 
   const BookCard({
     super.key,
     required this.title,
     required this.author,
     required this.imageUrl,
+    required this.onTap,
   });
 
   @override
@@ -105,7 +107,7 @@ class BookCard extends StatelessWidget {
               ),
 
               InkWell(
-                onTap: () => print('comprar $title'),
+                onTap: onTap,
                 child: Container(
                   padding: const .symmetric(horizontal: 8, vertical: 4),
                   decoration: BoxDecoration(
