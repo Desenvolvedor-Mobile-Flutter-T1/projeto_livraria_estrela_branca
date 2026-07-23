@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_livraria_estrela_branca/app/view/home/widgets/book.card.dart';
-import 'package:projeto_livraria_estrela_branca/app/view_model/home_viewmodel.dart';
 import 'package:projeto_livraria_estrela_branca/app/view_model/home_viewmodel_states.dart';
+import 'package:projeto_livraria_estrela_branca/app/view_model/home_viewmodel_valuenotifier.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

@@ -9,14 +9,17 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_mobx:  
+  flutter_mobx: ^2.3.0
+  mobx: ^2.6.0
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
+  mobx_codegen: ^2.7.7
   build_runner: 
-  mobx_codegen: 
+
 flutter:
   uses-material-design: true
   assets:
