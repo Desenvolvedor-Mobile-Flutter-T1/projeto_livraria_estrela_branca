@@ -1,9 +1,8 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:mobx/mobx.dart';
 import 'package:projeto_livraria_estrela_branca/app/view/home/widgets/book.card.dart';
-import 'package:projeto_livraria_estrela_branca/app/view_model/home_viewmodel.dart';
+import 'package:projeto_livraria_estrela_branca/app/view_model/home_viewmodel_mobx.dart';
 import 'package:projeto_livraria_estrela_branca/app/view_model/home_viewmodel_states.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
@@ -16,9 +15,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final HomeViewModel viewmodel = HomeViewModel();
-
-  
-
 
   @override
   void initState() {

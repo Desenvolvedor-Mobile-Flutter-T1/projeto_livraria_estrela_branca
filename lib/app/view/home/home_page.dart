@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:mobx/mobx.dart';
 import 'package:projeto_livraria_estrela_branca/app/view/home/widgets/book.card.dart';
 import 'package:projeto_livraria_estrela_branca/app/view_model/home_viewmodel.dart';
 import 'package:projeto_livraria_estrela_branca/app/view_model/home_viewmodel_states.dart';
@@ -17,9 +16,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final HomeViewModel viewmodel = HomeViewModel();
 
-  
-
-
   @override
   void initState() {
     viewmodel.getBooks();
@@ -33,7 +29,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    print('build');
+    
     return Scaffold(
       appBar: AppBar(
         leading: Icon(Icons.star, color: Colors.white),

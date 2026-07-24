@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'home_viewmodel.dart';
+part of 'home_viewmodel_mobx.dart';
 
 // **************************************************************************
 // StoreGenerator

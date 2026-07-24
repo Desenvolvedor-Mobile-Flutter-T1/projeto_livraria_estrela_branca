@@ -2,7 +2,7 @@ import 'package:mobx/mobx.dart';
 import 'package:projeto_livraria_estrela_branca/app/data/book_model.dart';
 import 'package:projeto_livraria_estrela_branca/app/data/book_repository.dart';
 import 'package:projeto_livraria_estrela_branca/app/view_model/home_viewmodel_states.dart';
-part 'home_viewmodel.g.dart';
+part 'home_viewmodel_mobx.g.dart';
 
 class HomeViewModel = HomeViewModelBase with _$HomeViewModel;
 
